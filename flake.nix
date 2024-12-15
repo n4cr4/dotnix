@@ -9,23 +9,26 @@
     };
   };
 
-  outputs = 
-        { 
-        self,
-        nixpkgs,
-        home-manager,
-        ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       homeConfigurations."n4cr4" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-                    inherit inputs;
-                };
+          inherit inputs;
+        };
 
         modules = [ ./home.nix ];
       };
+      formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
