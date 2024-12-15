@@ -6,5 +6,6 @@
     ./tools.nix
     ./shell
     ./editor.nix
+    ./dotfile
   ];
 }
