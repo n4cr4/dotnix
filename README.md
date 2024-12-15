@@ -27,3 +27,7 @@ Also, if you changed some configurations related to **zsh**, exec this.
 ```
 sheldon lock --update
 ```
+
+# Misc
+
+If you want to add zsh of profile, you have to add path to `/etc/shells` in order to valid the shell.
