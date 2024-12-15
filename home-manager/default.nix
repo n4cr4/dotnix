@@ -5,5 +5,6 @@
     ./git.nix
     ./tools.nix
     ./shell
+    ./editor.nix
   ];
 }

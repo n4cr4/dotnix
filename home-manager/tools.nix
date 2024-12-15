@@ -15,6 +15,5 @@
     zoxide
     zip
     unzip
-    neovim
   ];
 }
