@@ -7,5 +7,6 @@
     ./shell
     ./editor
     ./dotfile
+    ./tmux.nix
   ];
 }
