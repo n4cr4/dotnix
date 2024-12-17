@@ -7,7 +7,16 @@
     sensibleOnTop = true;
     historyLimit = 100000;
     plugins = with pkgs; [
-      tmuxPlugins.tokyo-night-tmux
+      {
+        plugin = tmuxPlugins.tokyo-night-tmux;
+        extraConfig = ''
+          set -g @tokyo-night-tmux_show_git 0
+          set -g @tokyo-night-tmux_window_id_style hsquare
+          set -g @tokyo-night-tmux_pane_id_style none
+          set -g @tokyo-night-tmux_zoom_id_style dsquare
+        '';
+      }
+
     ];
     extraConfig = ''
       set-option -g default-terminal "tmux-256color"
