@@ -30,4 +30,16 @@ sheldon lock --update
 
 # Misc
 
+## Default shell
+
 If you want to add zsh of profile, you have to add path to `/etc/shells` in order to valid the shell.
+
+## Debug lua configs
+
+If you want to debug some lua vim configs, then use below.
+
+```lua
+print(vim.inspect(hogehuga))
+```
+
+and just `:messages` in x-mode.

@@ -5,7 +5,7 @@
     ./git.nix
     ./tools.nix
     ./shell
-    ./editor.nix
+    ./editor
     ./dotfile
   ];
 }
