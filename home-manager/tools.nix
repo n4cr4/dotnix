@@ -15,5 +15,6 @@
     zoxide
     zip
     unzip
+    awscli2
   ];
 }
