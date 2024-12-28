@@ -8,5 +8,8 @@
     poetry
     nodejs-slim
     pnpm
+    typst
+    rustc
+    cargo
   ];
 }

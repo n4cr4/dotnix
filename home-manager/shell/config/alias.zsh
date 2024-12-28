@@ -1,5 +1,5 @@
 alias cat="bat -pP"
-alias ls="eza --icons"
+alias ls="eza --icons=always"
 alias la="ls -a -a"
 alias ll="ls -l"
 alias lla="ls -la -a"

@@ -4,7 +4,10 @@ shell = "zsh"
 local = "~/.config/sheldon/config"
 
 [plugins.compinit]
-inline = "autoload -Uz compinit && compinit"
+inline = '''
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+'''
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
@@ -28,4 +31,9 @@ eval "$(zoxide init zsh)"
 [plugins.fzf]
 inline = '''
 source <(fzf --zsh)
+'''
+
+[plugins.aws]
+inline = '''
+complete -C aws_completer aws
 '''
