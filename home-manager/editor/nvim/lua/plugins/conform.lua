@@ -6,10 +6,10 @@ return {
 		},
 		formatters = {
 			clang_format = {
-				prepend_args = { "-style={BasedOnStyle: LLVM, IndentWidth: 4}" },
+				prepend_args = { "-style={BasedOnStyle: LLVM, IndentWidth: " .. vim.opt.shiftwidth:get() .. "}" },
 			},
 			prettier = {
-				prepend_args = { "--tab-width", "4" },
+				prepend_args = { "--tab-width", vim.opt.shiftwidth:get() },
 			},
 		},
 	},
