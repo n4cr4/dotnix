@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     gcc
     go
-    nodejs-slim
+    nodejs
     pnpm
     typst
     rustc
