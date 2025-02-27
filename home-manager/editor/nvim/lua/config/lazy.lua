@@ -23,8 +23,10 @@ local LazyConf = {
 		{ import = "lazyvim.plugins.extras.lang.python" },
 		{ import = "lazyvim.plugins.extras.lang.clangd" },
 		{ import = "lazyvim.plugins.extras.lang.docker" },
-		{ import = "lazyvim.plugins.extras.lang.tex" },
 		{ import = "lazyvim.plugins.extras.lang.nix" },
+		{ import = "lazyvim.plugins.extras.lang.terraform" },
+    -- extras lsp
+		{ import = "lazyvim.plugins.extras.lsp.none-ls" },
 		-- extras formatter
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
 		-- own conf
