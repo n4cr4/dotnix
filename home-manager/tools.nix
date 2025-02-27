@@ -16,5 +16,7 @@
     zip
     unzip
     awscli2
+    act
+    gh
   ];
 }
