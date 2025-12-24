@@ -15,17 +15,37 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 # Update
 
-If some configurations have changed, exec this.
+This repository uses direnv to provide convenient update commands.
+When you `cd` into this directory, the development environment will be loaded automatically.
 
+## Quick Update Commands
+
+After entering this directory, use one of these commands:
+
+```bash
+# 1. Update home-manager only (fastest)
+hm
+
+# 2. Update home-manager + sheldon lock (when shell config changed)
+hm-shell
+
+# 3. Full update: flake + home-manager + sheldon lock (recommended periodically)
+hm-full
 ```
-# cd to this repo
+
+## Manual Update (without direnv)
+
+If direnv is not active, you can still update manually:
+
+```bash
+# Basic update
 home-manager switch --flake .
-```
 
-Also, if you changed some configurations related to **zsh**, exec this.
+# With shell update
+home-manager switch --flake . && sheldon lock --update
 
-```
-sheldon lock --update
+# Full update
+nix flake update && home-manager switch --flake . && sheldon lock --update
 ```
 
 # Misc

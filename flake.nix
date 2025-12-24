@@ -29,6 +29,9 @@
 
         modules = [ ./home.nix ];
       };
+
+      devShells.${system}.default = pkgs.mkShell { };
+
       formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
