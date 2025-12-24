@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     starship
@@ -11,9 +11,9 @@
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = false; # sheldon manages compinit
-    initExtra = ''
+    initContent = ''
       eval "$(sheldon source)"
     '';
   };
