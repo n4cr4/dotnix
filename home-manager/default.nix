@@ -1,4 +1,5 @@
 {
+  nixpkgs.config.allowUnfree = true;
   imports = [
     ./dev.nix
     ./direnv.nix
@@ -8,5 +9,6 @@
     ./editor
     ./dotfile
     ./tmux.nix
+    ./ai
   ];
 }

@@ -1,20 +1,23 @@
 {
   programs.git = {
     enable = true;
-    userName = "n4cr4";
-    userEmail = "n4cr4.dev@gmail.com";
-
-    delta.enable = true;
-
-    extraConfig = {
+    settings = {
+      user = {
+        name = "n4cr4";
+        email = "n4cr4.dev@gmail.com";
+      };
       init.defaultBranch = "main";
       core = {
         editor = "nvim";
         quotepath = false;
-
       };
       pull.rebase = true;
       fetch.prune = true;
     };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 }
