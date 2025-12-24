@@ -6,22 +6,14 @@
 
   # Manage zsh config files
   home.file = {
-    ".config/zsh/alias.zsh".source = ./config/alias.zsh;
-    ".config/zsh/ghq-fzf.zsh".source = ./config/ghq-fzf.zsh;
-    ".config/zsh/options.zsh".source = ./config/options.zsh;
-    ".config/zsh/tmux.zsh".source = ./config/tmux.zsh;
-    ".config/zsh/env.zsh".source = ./config/env.zsh;
+    ".config/sheldon/config".source = ./config;
   };
 
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
-    initContent = ''
-      # Source custom config files
-      for config_file in ~/.config/zsh/{env,options,alias,ghq-fzf,tmux}.zsh; do
-        [[ -f "$config_file" ]] && source "$config_file"
-      done
-
+    enableCompletion = false; # sheldon manages compinit
+    initExtra = ''
       eval "$(sheldon source)"
     '';
   };
@@ -32,12 +24,17 @@
       shell = "zsh";
 
       plugins = {
-        # Completions
-        compinit = {
+        # Completions (renamed to load first)
+        "00-compinit" = {
           inline = ''
             autoload bashcompinit && bashcompinit
             autoload -Uz compinit && compinit
           '';
+        };
+
+        # Config files
+        config = {
+          local = "~/.config/sheldon/config";
         };
 
         fzf-tab = {
