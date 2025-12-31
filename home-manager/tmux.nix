@@ -6,6 +6,12 @@
     prefix = "C-t";
     sensibleOnTop = true;
     historyLimit = 100000;
+    escapeTime = 0;
+    focusEvents = true;
+    baseIndex = 1;
+    customPaneNavigationAndResize = true;
+    resizeAmount = 5;
+    aggressiveResize = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.tokyo-night-tmux;
@@ -23,21 +29,9 @@
       set-option -ga terminal-overrides ",xterm-256color:RGB"
       bind -r m resize-pane -Z
 
-      # switching pane
-      bind -r k select-pane -U 
-      bind -r j select-pane -D 
-      bind -r h select-pane -L 
-      bind -r l select-pane -R
-
       # move window
       bind-key -n C-S-Left swap-window -t -1 \; previous-window
       bind-key -n C-S-Right swap-window -t +1 \; next-window
-
-      # resize pane
-      bind -r C-k resize-pane -U 5
-      bind -r C-j resize-pane -D 5
-      bind -r C-h resize-pane -L 5
-      bind -r C-l resize-pane -R 5
 
       # split horizontal
       bind \\ split-window -h -c '#{pane_current_path}'
