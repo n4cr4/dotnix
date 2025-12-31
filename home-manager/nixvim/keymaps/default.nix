@@ -9,6 +9,32 @@
       options.desc = "Exit insert mode";
     }
 
+    # Better movement
+    {
+      mode = "n";
+      key = "j";
+      action = "gj";
+      options.desc = "Move down (display line)";
+    }
+    {
+      mode = "n";
+      key = "k";
+      action = "gk";
+      options.desc = "Move up (display line)";
+    }
+    {
+      mode = "n";
+      key = "<C-d>";
+      action = "<C-d>zz";
+      options.desc = "Scroll down (center)";
+    }
+    {
+      mode = "n";
+      key = "<C-u>";
+      action = "<C-u>zz";
+      options.desc = "Scroll up (center)";
+    }
+
     # Clear search highlights
     {
       mode = "n";
