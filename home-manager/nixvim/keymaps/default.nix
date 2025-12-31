@@ -111,6 +111,18 @@
 
     # Better indenting
     {
+      mode = "n";
+      key = "<";
+      action = "<<";
+      options.desc = "Indent line left";
+    }
+    {
+      mode = "n";
+      key = ">";
+      action = ">>";
+      options.desc = "Indent line right";
+    }
+    {
       mode = "v";
       key = "<";
       action = "<gv";
@@ -137,6 +149,12 @@
       key = "<leader>q";
       action = "<cmd>q<CR>";
       options.desc = "Quit";
+    }
+    {
+      mode = "n";
+      key = "<leader>qq";
+      action = "<cmd>qa<CR>";
+      options.desc = "Quit all";
     }
   ];
 }
