@@ -6,7 +6,7 @@
     ./git.nix
     ./tools.nix
     ./shell
-    ./editor
+    ./nixvim
     ./dotfile
     ./tmux.nix
     ./ai

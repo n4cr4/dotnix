@@ -19,7 +19,11 @@ This is a Nix-based dotfiles repository (`dotnix`) that manages n4cr4's developm
 The `home-manager/` directory contains modular Nix configurations:
 
 - **shell/**: Zsh configuration using sheldon for plugin management. Uses a two-step plugin loading system with compinit loaded first via "00-compinit" plugin. Shell configs are stored in `shell/config/` and loaded by sheldon.
-- **editor/**: Neovim configuration. The actual vim config is in `editor/nvim/` with init.lua, lua modules, and snippets.
+- **nixvim/**: Neovim configuration using nixvim (nix-community/nixvim). Fully declarative Neovim setup with LSP, completion, Treesitter, and UI plugins. Configuration is organized into:
+  - `opts/`: Vim options and globals
+  - `keymaps/`: Keybinding configurations
+  - `plugins/`: Plugin configurations (ui, lsp, editor, lang)
+- **editor.backup/**: Archived LazyVim configuration (kept as backup)
 - **dotfile/**: Legacy dotfiles (gdbinit, latexmkrc, vimrc, lazygit.yml) managed via home-manager file linking
 - **dev.nix**: Development toolchain packages (gcc, go, nodejs, pnpm, typst, rustc, cargo)
 - **tools.nix**: CLI utilities (bat, delta, eza, fd, ripgrep, fzf, ghq, lazygit, lazydocker, jq, zoxide, awscli2, gh, etc.)
@@ -87,6 +91,16 @@ Shell plugins are managed by sheldon. The configuration uses a specific load ord
 
 When modifying shell configs in `home-manager/shell/config/`, use `make hm-shell` to apply changes.
 
+### Working with Nixvim Configuration
+
+Neovim is configured using nixvim, a Nix-based configuration framework. The configuration is located in `home-manager/nixvim/`:
+
+- Modify plugin settings in `plugins/` subdirectories (ui, lsp, editor, lang)
+- Update keymaps in `keymaps/default.nix`
+- Change Vim options in `opts/default.nix`
+
+After modifying nixvim configs, run `make hm` to rebuild and apply changes.
+
 ### Debugging
 
 For debugging Neovim Lua configs:
@@ -102,3 +116,4 @@ Then use `:messages` in command mode to view output.
 - **API Keys**: ANTHROPIC_API_KEY for Claude Code should be in `~/.anthropic_api_key` and loaded via `~/.config/zsh/env.zsh`
 - **Formatter**: Repository uses nixfmt-rfc-style (run with `nix fmt`)
 - **Git config**: Uses pull.rebase=true and fetch.prune=true by default
+- **Nixvim**: Neovim is configured declaratively using nixvim. Plugin dependencies and LSP servers are automatically managed by Nix.

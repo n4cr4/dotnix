@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,6 +18,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixvim,
       ...
     }@inputs:
     let
@@ -27,7 +32,10 @@
           inherit inputs;
         };
 
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+          nixvim.homeManagerModules.nixvim
+        ];
       };
 
       devShells.${system}.default = pkgs.mkShell { };
