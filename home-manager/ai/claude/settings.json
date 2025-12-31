@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [],
+    "defaultMode": "plan"
+  },
+  "alwaysThinkingEnabled": true,
+  "outputStyle": "Explanatory"
+}
