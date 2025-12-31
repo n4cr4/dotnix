@@ -23,7 +23,6 @@ The `home-manager/` directory contains modular Nix configurations:
   - `opts/`: Vim options and globals
   - `keymaps/`: Keybinding configurations
   - `plugins/`: Plugin configurations (ui, lsp, editor, lang)
-- **editor.backup/**: Archived LazyVim configuration (kept as backup)
 - **dotfile/**: Legacy dotfiles (gdbinit, latexmkrc, vimrc, lazygit.yml) managed via home-manager file linking
 - **dev.nix**: Development toolchain packages (gcc, go, nodejs, pnpm, typst, rustc, cargo)
 - **tools.nix**: CLI utilities (bat, delta, eza, fd, ripgrep, fzf, ghq, lazygit, lazydocker, jq, zoxide, awscli2, gh, etc.)
@@ -108,6 +107,22 @@ For debugging Neovim Lua configs:
 print(vim.inspect(variable_name))
 ```
 Then use `:messages` in command mode to view output.
+
+**IMPORTANT: When debugging configuration changes**, make sure to `git add` your modified files before running `make hm` or testing changes. Nix flakes only track files that are staged in Git, so unstaged changes will not be detected by home-manager. Always follow this workflow:
+
+```bash
+# 1. Modify configuration files
+vim home-manager/nixvim/plugins/...
+
+# 2. Stage changes so Nix can detect them
+git add .
+
+# 3. Apply and test the configuration
+make hm
+
+# 4. If changes work as expected, commit them
+git commit -m "description of changes"
+```
 
 ## Important Notes
 

@@ -1,9 +1,5 @@
 { ... }:
 {
-  imports = [
-    ./vimtex.nix
-  ];
-
   programs.nixvim.plugins = {
     # Additional language support
     nix.enable = true;
