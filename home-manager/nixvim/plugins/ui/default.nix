@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./alpha.nix
     ./lualine.nix
     ./bufferline.nix
     ./telescope.nix
