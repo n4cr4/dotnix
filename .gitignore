@@ -1,0 +1,13 @@
+# direnv cache
+.direnv/
+
+# Nix build results
+result
+result-*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

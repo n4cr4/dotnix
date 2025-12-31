@@ -15,27 +15,36 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 # Update
 
-This repository uses direnv to provide convenient update commands.
-When you `cd` into this directory, the development environment will be loaded automatically.
+This repository uses Make to provide convenient update commands.
 
 ## Quick Update Commands
 
-After entering this directory, use one of these commands:
+Use one of these make targets:
 
 ```bash
 # 1. Update home-manager only (fastest)
-hm
+make hm
 
 # 2. Update home-manager + sheldon lock (when shell config changed)
-hm-shell
+make hm-shell
 
 # 3. Full update: flake + home-manager + sheldon lock (recommended periodically)
-hm-full
+make hm-full
 ```
 
-## Manual Update (without direnv)
+## Other Make Commands
 
-If direnv is not active, you can still update manually:
+```bash
+# Format Nix files
+make fmt
+
+# Show all available commands
+make help
+```
+
+## Manual Update (without Make)
+
+If you prefer to run commands manually:
 
 ```bash
 # Basic update

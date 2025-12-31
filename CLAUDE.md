@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Nix-based dotfiles repository (`dotnix`) that manages n4cr4's development environment configuration using home-manager. The configuration is structured as a Nix flake and uses direnv for convenient development workflows.
+This is a Nix-based dotfiles repository (`dotnix`) that manages n4cr4's development environment configuration using home-manager. The configuration is structured as a Nix flake and uses Make for convenient build workflows.
 
 ## Architecture
 
@@ -30,13 +30,16 @@ The `home-manager/` directory contains modular Nix configurations:
 
 ### Update Workflow
 
-The repository uses **direnv** to provide convenient wrapper commands. When you `cd` into this directory:
+The repository uses **Make** to provide convenient build commands:
 
-1. **hm** - Fast update: `home-manager switch --flake .`
-2. **hm-shell** - Update with shell plugins: `home-manager switch --flake . && sheldon lock --update`
-3. **hm-full** - Full update: `nix flake update && home-manager switch --flake . && sheldon lock --update`
+1. **make hm** - Fast update: `home-manager switch --flake .`
+2. **make hm-shell** - Update with shell plugins: `home-manager switch --flake . && sheldon lock --update`
+3. **make hm-full** - Full update: `nix flake update && home-manager switch --flake . && sheldon lock --update`
 
-These commands are defined in `.envrc` and loaded automatically when entering the directory.
+Additional commands:
+- **make fmt** - Format Nix files using `nix fmt`
+- **make clean** - Remove build artifacts and lock files
+- **make help** - Display all available commands (default target)
 
 ## Common Commands
 
@@ -44,16 +47,22 @@ These commands are defined in `.envrc` and loaded automatically when entering th
 
 ```bash
 # Quick update (most common)
-hm
+make hm
 
 # Update after changing shell config
-hm-shell
+make hm-shell
 
 # Full update including flake inputs
-hm-full
+make hm-full
+
+# Format Nix files
+make fmt
+
+# Show all available commands
+make help
 ```
 
-### Manual Commands (without direnv)
+### Manual Commands (without Make)
 
 ```bash
 # Apply configuration
@@ -76,7 +85,7 @@ Shell plugins are managed by sheldon. The configuration uses a specific load ord
 - Config files from `~/.config/sheldon/config` load next
 - Other plugins (fzf-tab, zsh-autosuggestions, etc.) load after
 
-When modifying shell configs in `home-manager/shell/config/`, use `hm-shell` to apply changes.
+When modifying shell configs in `home-manager/shell/config/`, use `make hm-shell` to apply changes.
 
 ### Debugging
 
