@@ -5,9 +5,7 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": [],
-    "defaultMode": "plan"
+    "allow": []
   },
-  "alwaysThinkingEnabled": true,
   "outputStyle": "Explanatory"
 }
