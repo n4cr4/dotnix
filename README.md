@@ -13,36 +13,59 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
   sh -s -- install
 ```
 
+## direnv
+
+Install direnv and configure:
+
+```
+nix-env -iA nixpkgs.direnv
+```
+
+Then add to your shell configuration:
+
+```bash
+# For zsh
+eval "$(direnv hook zsh)"
+
+# For bash
+eval "$(direnv hook bash)"
+```
+
 # Update
 
-This repository uses Make to provide convenient update commands.
+This repository uses direnv for automatic environment loading and devshell for convenience commands.
+
+## Workflow
+
+1. **Normal use**: direnv automatically loads the environment when you enter the directory
+2. **With shortcuts**: Run `nix develop` in a separate tmux pane to access devshell aliases
 
 ## Quick Update Commands
 
-Use one of these make targets:
+Use these aliases from devshell (run `nix develop` first):
 
 ```bash
 # 1. Update home-manager only (fastest)
-make hm
+hm
 
 # 2. Update home-manager + sheldon lock (when shell config changed)
-make hm-shell
+hm-shell
 
 # 3. Full update: flake + home-manager + sheldon lock (recommended periodically)
-make hm-full
+hm-full
 ```
 
-## Other Make Commands
+## Other Commands
 
 ```bash
 # Format Nix files
-make fmt
+fmt
 
 # Show all available commands
-make help
+help
 ```
 
-## Manual Update (without Make)
+## Manual Update (without devshell)
 
 If you prefer to run commands manually:
 
