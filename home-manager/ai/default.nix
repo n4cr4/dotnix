@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    claude-code
-  ];
-
   # Add opencode bin to PATH
   home.sessionPath = [
     "${config.home.homeDirectory}/.opencode/bin"

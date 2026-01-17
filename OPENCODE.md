@@ -1,6 +1,6 @@
-# CLAUDE.md
+# OPENCODE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to OpenCode (opencode.ai) when working with code in this repository.
 
 ## Repository Overview
 
@@ -29,7 +29,7 @@ The `home-manager/` directory contains modular Nix configurations:
 - **git.nix**: Git configuration with delta integration
 - **tmux.nix**: Tmux configuration
 - **direnv.nix**: direnv integration
-- **ai/**: Claude Code CLI configuration (requires ANTHROPIC_API_KEY at runtime via ~/.config/zsh/env.zsh)
+- **ai/**: OpenCode CLI configuration with GLM-4.7 model
 
 ## Common Commands
 
@@ -117,7 +117,7 @@ print(vim.inspect(variable_name))
 ```
 Then use `:messages` in command mode to view output.
 
-**IMPORTANT: When debugging configuration changes**, make sure to `git add` your modified files before running `make hm` or testing changes. Nix flakes only track files that are staged in Git, so unstaged changes will not be detected by home-manager. Always follow this workflow:
+**IMPORTANT: When debugging configuration changes**, make sure to `git add` your modified files before running `hm` or testing changes. Nix flakes only track files that are staged in Git, so unstaged changes will not be detected by home-manager. Always follow this workflow:
 
 ```bash
 # 1. Modify configuration files
@@ -138,7 +138,7 @@ git commit -m "description of changes"
 
 - **allowUnfree**: Enabled in home-manager/default.nix to allow unfree packages
 - **Shell setup**: To use zsh as default shell, add the nix-managed zsh path to `/etc/shells`
-- **API Keys**: ANTHROPIC_API_KEY for Claude Code should be in `~/.anthropic_api_key` and loaded via `~/.config/zsh/env.zsh`
+- **API Keys**: OpenCode uses GLM-4.7 model via zai API. Configuration is in `~/.config/opencode/opencode.json`
 - **Formatter**: Repository uses nixfmt-rfc-style (run with `nix fmt`)
 - **Git config**: Uses pull.rebase=true and fetch.prune=true by default
 - **Nixvim**: Neovim is configured declaratively using nixvim. Plugin dependencies and LSP servers are automatically managed by Nix.
