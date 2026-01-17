@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Nix-based dotfiles repository (`dotnix`) that manages n4cr4's development environment configuration using home-manager. The configuration is structured as a Nix flake and uses Make for convenient build workflows.
+This is a Nix-based dotfiles repository (`dotnix`) that manages n4cr4's development environment configuration using home-manager. The configuration is structured as a Nix flake and uses direnv for automatic environment loading.
 
 ## Architecture
 
@@ -31,41 +31,27 @@ The `home-manager/` directory contains modular Nix configurations:
 - **direnv.nix**: direnv integration
 - **ai/**: Claude Code CLI configuration (requires ANTHROPIC_API_KEY at runtime via ~/.config/zsh/env.zsh)
 
-### Update Workflow
-
-The repository uses **Make** to provide convenient build commands:
-
-1. **make hm** - Fast update: `home-manager switch --flake .`
-2. **make hm-shell** - Update with shell plugins: `home-manager switch --flake . && sheldon lock --update`
-3. **make hm-full** - Full update: `nix flake update && home-manager switch --flake . && sheldon lock --update`
-
-Additional commands:
-- **make fmt** - Format Nix files using `nix fmt`
-- **make clean** - Remove build artifacts and lock files
-- **make help** - Display all available commands (default target)
-
 ## Common Commands
 
 ### Applying Configuration Changes
 
+The repository uses direnv for automatic environment loading. The `.envrc` file contains `use flake`, which automatically loads the Nix environment when entering the directory.
+
+For quick configuration shortcuts, use `nix develop`:
+
 ```bash
-# Quick update (most common)
-make hm
+# Enter devshell with shortcuts
+nix develop
 
-# Update after changing shell config
-make hm-shell
-
-# Full update including flake inputs
-make hm-full
-
-# Format Nix files
-make fmt
-
-# Show all available commands
-make help
+# Available shortcuts:
+# hm           - home-manager switch --flake .
+# hm-shell     - home-manager switch --flake . && sheldon lock --update
+# hm-full      - nix flake update && home-manager switch --flake . && sheldon lock --update
+# fmt          - nix fmt
+# help         - Display available commands
 ```
 
-### Manual Commands (without Make)
+### Manual Commands
 
 ```bash
 # Apply configuration
@@ -81,6 +67,29 @@ sheldon lock --update
 nix fmt
 ```
 
+### Using Shortcuts
+
+The devshell provides convenient shortcuts for common operations. Enter with `nix develop`:
+
+```bash
+nix develop
+
+# Apply configuration quickly
+hm
+
+# Apply configuration and update shell plugins
+hm-shell
+
+# Full update including flake inputs
+hm-full
+
+# Format Nix files
+fmt
+
+# Show all available commands
+help
+```
+
 ### Working with Shell Configuration
 
 Shell plugins are managed by sheldon. The configuration uses a specific load order:
@@ -88,7 +97,7 @@ Shell plugins are managed by sheldon. The configuration uses a specific load ord
 - Config files from `~/.config/sheldon/config` load next
 - Other plugins (fzf-tab, zsh-autosuggestions, etc.) load after
 
-When modifying shell configs in `home-manager/shell/config/`, use `make hm-shell` to apply changes.
+When modifying shell configs in `home-manager/shell/config/`, use `hm-shell` shortcut from devshell to apply changes.
 
 ### Working with Nixvim Configuration
 
@@ -98,7 +107,7 @@ Neovim is configured using nixvim, a Nix-based configuration framework. The conf
 - Update keymaps in `keymaps/default.nix`
 - Change Vim options in `opts/default.nix`
 
-After modifying nixvim configs, run `make hm` to rebuild and apply changes.
+After modifying nixvim configs, run `hm` shortcut from devshell to rebuild and apply changes.
 
 ### Debugging
 
@@ -118,7 +127,8 @@ vim home-manager/nixvim/plugins/...
 git add .
 
 # 3. Apply and test the configuration
-make hm
+nix develop
+hm
 
 # 4. If changes work as expected, commit them
 git commit -m "description of changes"
