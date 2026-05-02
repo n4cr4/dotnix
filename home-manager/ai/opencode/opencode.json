@@ -1,5 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "zai/glm-4.7",
-  "autoupdate": true
+  "model": "zai/glm-5.1",
+  "autoupdate": true,
+  "enabled_providers": ["zai"],
+  "share": "auto",
+  "watcher": {
+    "ignore": ["node_modules/**", "dist/**", ".git/**"]
+  }
 }
