@@ -12,20 +12,8 @@
     customPaneNavigationAndResize = true;
     resizeAmount = 5;
     aggressiveResize = true;
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.tokyo-night-tmux;
-        extraConfig = ''
-          set -g @tokyo-night-tmux_show_git 0
-          set -g @tokyo-night-tmux_window_id_style hsquare
-          set -g @tokyo-night-tmux_pane_id_style none
-          set -g @tokyo-night-tmux_zoom_id_style dsquare
-        '';
-      }
-
-    ];
+    terminal = "tmux-256color";
     extraConfig = ''
-      set-option -g default-terminal "tmux-256color"
       set-option -ga terminal-overrides ",xterm-256color:RGB"
       set -g extended-keys on
       set -s user-keys[0] "\e[13;5u"
@@ -33,6 +21,17 @@
       bind -r m resize-pane -Z
 
       set -g set-clipboard on
+
+      # --- status bar ---
+      set -g status-position top
+      set -g status-style "bg=#1a1b26,fg=#a9b1d6"
+      set -g status-left "#[fg=#7aa2f7,bold] #S "
+      set -g status-left-length 30
+      set -g status-right "#[fg=#565f89] %Y-%m-%d #[fg=#7aa2f7]%H:%M "
+      set -g status-right-length 50
+      set -g window-status-format "#[fg=#565f89] #I:#W "
+      set -g window-status-current-format "#[fg=#7aa2f7,bold] #I:#W "
+      set -g window-status-separator ""
 
       # move window
       bind-key -n C-S-Left swap-window -t -1 \; previous-window
