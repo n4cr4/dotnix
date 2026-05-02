@@ -15,4 +15,8 @@
   home.file.".config/opencode/tui.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/tui.json";
   };
+
+  home.file.".config/opencode/commands" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/commands";
+  };
 }
