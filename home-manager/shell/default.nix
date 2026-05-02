@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   home.packages = with pkgs; [
-    starship
+    pure-prompt
   ];
 
   # Manage zsh config files
@@ -28,7 +28,7 @@
         "00-compinit" = {
           inline = ''
             autoload bashcompinit && bashcompinit
-            autoload -Uz compinit && compinit
+            autoload -Uz compinit && compinit -C
           '';
         };
 
@@ -50,8 +50,8 @@
         };
 
         # Tool integrations
-        starship = {
-          inline = ''eval "$(starship init zsh)"'';
+        pure = {
+          inline = ''autoload -U promptinit && promptinit && prompt pure'';
         };
 
         zoxide = {
