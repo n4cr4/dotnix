@@ -23,7 +23,7 @@
       set -g set-clipboard on
 
       # --- status bar ---
-      set -g status-position top
+      set -g status-position bottom
       set -g status-style "bg=#1a1b26,fg=#a9b1d6"
       set -g status-left "#[fg=#7aa2f7,bold] #S "
       set -g status-left-length 30
