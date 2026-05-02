@@ -27,6 +27,9 @@
     extraConfig = ''
       set-option -g default-terminal "tmux-256color"
       set-option -ga terminal-overrides ",xterm-256color:RGB"
+      set -g extended-keys on
+      set -g user-keys[0] "\e[13;5u"
+      bind -n User0 send-keys -l "\e[13;5u"
       bind -r m resize-pane -Z
 
       set -g set-clipboard on

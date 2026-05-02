@@ -12,4 +12,7 @@
   home.file.".config/opencode/AGENTS.md" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/AGENTS.md";
   };
+  home.file.".config/opencode/tui.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/tui.json";
+  };
 }
