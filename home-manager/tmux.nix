@@ -29,6 +29,9 @@
       set-option -ga terminal-overrides ",xterm-256color:RGB"
       bind -r m resize-pane -Z
 
+      set -g set-clipboard on
+      set -g allow-passthrough all
+
       # move window
       bind-key -n C-S-Left swap-window -t -1 \; previous-window
       bind-key -n C-S-Right swap-window -t +1 \; next-window

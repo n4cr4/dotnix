@@ -1,8 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "zai/glm-4.7",
-  "autoupdate": true,
-  "keybinds": {
-    "variant_cycle": "ctrl+shift+v"
-  }
+  "autoupdate": true
 }
