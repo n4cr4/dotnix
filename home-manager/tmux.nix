@@ -21,6 +21,7 @@
       bind -r m resize-pane -Z
 
       set -g set-clipboard on
+      set -g allow-passthrough on
 
       # --- status bar ---
       set -g status-position bottom
