@@ -16,6 +16,10 @@
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/tui.json";
   };
 
+  home.file.".config/opencode/oh-my-openagent.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/oh-my-openagent.json";
+  };
+
   home.file.".config/opencode/commands" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotnix/home-manager/ai/opencode/commands";
   };
