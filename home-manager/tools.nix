@@ -18,5 +18,6 @@
     awscli2
     act
     gh
+    bun
   ];
 }
