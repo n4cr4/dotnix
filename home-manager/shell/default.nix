@@ -14,7 +14,16 @@
     dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = false; # sheldon manages compinit
     initContent = ''
-      eval "$(sheldon source)"
+      # Restore Windows PATH stripped by pam_env.so via /etc/environment
+      # under WSL2 systemd mode (see .omo/plans/fix-wsl-windows-path.md).
+      if [ -d /mnt/c/Windows/System32 ]; then
+        path+=(
+          /mnt/c/Windows/System32
+          /mnt/c/Windows
+          /mnt/c/Windows/System32/Wbem
+          /mnt/c/Windows/System32/WindowsPowerShell/v1.0
+        )
+      fi
     '';
   };
 
