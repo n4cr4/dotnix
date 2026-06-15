@@ -15,12 +15,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 # Update
 
-This repository uses direnv for automatic environment loading and devshell for convenience commands.
-
-## Workflow
-
-1. **Normal use**: direnv automatically loads the environment when you enter the directory
-2. **With shortcuts**: Run `nix develop` in a separate tmux pane to access devshell aliases
+This repository uses [direnv](https://direnv.net/) for automatic environment loading. When you enter the directory, `hm` and related commands become available immediately via `use flake` — no need to run `nix develop`.
 
 ## First-time Setup
 
@@ -35,7 +30,7 @@ After the initial setup, you can use the update commands below.
 
 ## Quick Update Commands
 
-Use these aliases from devshell (run `nix develop` first):
+These commands are available as soon as direnv loads the flake (i.e. when you `cd` into this directory):
 
 ```bash
 # 1. Update home-manager only (fastest)
@@ -53,7 +48,4 @@ hm-full
 ```bash
 # Format Nix files
 fmt
-
-# Show all available commands
-help
 ```
