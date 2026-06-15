@@ -5,7 +5,10 @@
     settings = {
       formatters_by_ft = {
         nix = [ "nixfmt" ];
-        python = [ "black" "isort" ];
+        python = [
+          "black"
+          "isort"
+        ];
         javascript = [ "prettier" ];
         typescript = [ "prettier" ];
         javascriptreact = [ "prettier" ];
