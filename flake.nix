@@ -39,26 +39,18 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        shellHook = ''
-          alias hm="home-manager switch --flake ."
-          alias hm-shell="home-manager switch --flake . && sheldon lock --update"
-          alias hm-full="nix flake update && home-manager switch --flake . && sheldon lock --update"
-          alias fmt="nix fmt"
-
-          help() {
-            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            echo "dotnix - Nix Configuration Management"
-            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            echo ""
-            echo "Update commands:"
-            echo "  hm           - home-manager switch only (fastest)"
-            echo "  hm-shell     - home-manager switch + sheldon lock"
-            echo "  hm-full      - flake update + home-manager switch + sheldon lock"
-            echo ""
-            echo "Maintenance commands:"
-            echo "  fmt          - format Nix files"
-          }
-        '';
+        packages =
+          let
+            mkCmd = name: body: pkgs.writeShellScriptBin name body;
+          in
+          [
+            (mkCmd "hm" "home-manager switch --flake .")
+            (mkCmd "hm-shell" "home-manager switch --flake . && sheldon lock --update")
+            (mkCmd "hm-full" ''
+              nix flake update && home-manager switch --flake . && sheldon lock --update
+            '')
+            (mkCmd "fmt" "nix fmt")
+          ];
       };
 
       formatter.${system} = pkgs.nixfmt-rfc-style;
